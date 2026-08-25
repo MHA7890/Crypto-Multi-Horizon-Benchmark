@@ -182,6 +182,8 @@ scoring:
   interval_weight: 0.35
   directional_weight: 0.20
   efficiency_weight: 0.05
-```
+---
 
+## License
 
+This project is open-source under the MIT License.
