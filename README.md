@@ -1,16 +1,16 @@
-# 🚀 Cryptocurrency Forecasting Engine & Data Pipeline (`project-2day`)
+# Cryptocurrency Forecasting Engine & Data Pipeline
 
 A production-grade, GPU-accelerated time-series data collection, feature engineering, and forecasting benchmark system for cryptocurrency markets.
 
 ---
 
-## 📌 Overview
+## Overview
 
-**`project-2day`** is an end-to-end framework designed to ingest, clean, feature-engineer, and model historical and real-time cryptocurrency market data from Binance Spot. It benchmarks state-of-the-art machine learning and deep learning forecasting architectures across **5 prediction horizons** ($1\text{d}, 7\text{d}, 14\text{d}, 30\text{d}, 90\text{d}$) while maintaining strict zero-data-leakage constraints.
+An end-to-end framework designed to ingest, clean, feature-engineer, and model historical and real-time cryptocurrency market data from Binance Spot. It benchmarks state-of-the-art machine learning and deep learning forecasting architectures across **5 prediction horizons** ($1\text{d}, 7\text{d}, 14\text{d}, 30\text{d}, 90\text{d}$) while maintaining strict zero-data-leakage constraints.
 
 ---
 
-## 🏗️ Architecture & Data Lifecycle
+## Architecture & Data Lifecycle
 
 ```mermaid
 graph TD
@@ -28,7 +28,7 @@ graph TD
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### 1. Data Ingestion & Real-Time Streaming
 * **Resumable History Downloader** ([history_downloader.py](file:///h:/project-2day/history_downloader.py)): Fetches 1h historical OHLCV data from Binance with append-only streaming writes, timestamp continuity checking, and automatic verification of zero-volume rows against the Binance REST API.
@@ -57,10 +57,10 @@ $$\text{Composite Score} = 0.40 \cdot \text{Accuracy} + 0.35 \cdot \text{Interva
 
 ---
 
-## 📁 Repository Directory Layout
+## Repository Directory Layout
 
 ```text
-project-2day/
+.
 ├── configs/
 │   └── experiment.yaml        # Centralized experiment hyperparameters & horizons
 ├── forecasting/               # Core machine learning & evaluation package
@@ -89,15 +89,15 @@ project-2day/
 
 ---
 
-## 🛠️ Quickstart & Usage
+## Quickstart & Usage
 
 ### 1. Installation & Setup
 
 Clone the repository and install required dependencies:
 
 ```bash
-git clone https://github.com/your-username/project-2day.git
-cd project-2day
+git clone https://github.com/MHA7890/Crypto-Multi-Horizon-Benchmark.git
+cd Crypto-Multi-Horizon-Benchmark
 
 # Create and activate virtual environment
 python -m venv venv
@@ -160,7 +160,7 @@ python run_all.py --resume
 
 ---
 
-## 📊 Configuration Settings (`configs/experiment.yaml`)
+## Configuration Settings (`configs/experiment.yaml`)
 
 You can customize forecast horizons, validation split ratios, hardware allocation, and scoring weights in `configs/experiment.yaml`:
 
@@ -186,6 +186,6 @@ scoring:
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source under the MIT License.
