@@ -184,8 +184,4 @@ scoring:
   efficiency_weight: 0.05
 ```
 
----
 
-## License
-
-This project is open-source under the MIT License.
