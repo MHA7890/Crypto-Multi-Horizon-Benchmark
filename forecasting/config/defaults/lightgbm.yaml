@@ -1,0 +1,28 @@
+# LightGBM default hyperparameters
+#
+# Uses native quantile regression objective for prediction intervals.
+# Saved in LightGBM's native text format (.txt) for portability and
+# human readability.
+
+n_estimators: 1000
+max_depth: -1                        # -1 = no limit
+learning_rate: 0.05
+num_leaves: 63
+subsample: 0.8
+colsample_bytree: 0.8
+min_child_samples: 20
+reg_alpha: 0.1
+reg_lambda: 0.1
+
+# Early stopping
+early_stopping_rounds: 50
+verbose: -1                          # Suppress per-iteration output
+
+# Quantile regression alphas for prediction intervals
+quantile_alpha: [0.05, 0.50, 0.95]
+
+# Device: 'cpu' or 'gpu' (auto-set by device detection)
+device_type: "cpu"
+
+# Reproducibility
+random_state: null

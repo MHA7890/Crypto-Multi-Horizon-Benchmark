@@ -1,0 +1,16 @@
+# Random Forest default hyperparameters
+#
+# Uses sklearn's RandomForestRegressor. Prediction intervals are
+# produced via quantile regression: individual tree predictions
+# are collected and the desired percentiles extracted directly.
+
+n_estimators: 500
+max_depth: null                      # null = unlimited depth
+min_samples_split: 5
+min_samples_leaf: 3
+max_features: "sqrt"
+bootstrap: true
+n_jobs: 1                            # Overridden by training.n_jobs
+
+# Random state set by global seed
+random_state: null

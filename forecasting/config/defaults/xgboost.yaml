@@ -1,0 +1,28 @@
+# XGBoost default hyperparameters
+#
+# Uses quantile regression (reg:quantileerror) to produce prediction
+# intervals. Three models are trained per horizon: lower quantile,
+# median, and upper quantile.
+
+n_estimators: 1000
+max_depth: 6
+learning_rate: 0.05
+subsample: 0.8
+colsample_bytree: 0.8
+min_child_weight: 5
+reg_alpha: 0.1
+reg_lambda: 1.0
+gamma: 0.0
+
+# Early stopping
+early_stopping_rounds: 50
+
+# Quantile regression alphas for prediction intervals
+# [lower, median, upper] — must match scoring.confidence_level
+quantile_alpha: [0.05, 0.50, 0.95]
+
+# Device: 'cpu' or 'cuda' (auto-set by device detection)
+device: "cpu"
+
+# Reproducibility
+random_state: null

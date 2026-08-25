@@ -1,0 +1,22 @@
+# ARIMA / SARIMAX default hyperparameters
+#
+# ARIMA is a univariate statistical baseline. It uses ONLY the target
+# series (log returns of close price) and ignores all engineered features.
+# This is intentional — it benchmarks whether the feature-based models
+# actually add value over a pure time-series approach.
+
+# Non-seasonal order (p, d, q)
+order: [2, 0, 2]
+
+# Seasonal order (P, D, Q, s) — set s=0 to disable seasonality
+seasonal_order: [0, 0, 0, 0]
+
+# Trend component: 'n' (none), 'c' (constant), 't' (linear), 'ct' (both)
+trend: "c"
+
+# Enforce stationarity / invertibility constraints
+enforce_stationarity: true
+enforce_invertibility: true
+
+# Maximum iterations for MLE optimisation
+maxiter: 200

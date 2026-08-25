@@ -1,0 +1,76 @@
+# ──────────────────────────────────────────────────────────────
+# Experiment Configuration
+# ──────────────────────────────────────────────────────────────
+# Every configurable parameter used by the forecasting system.
+# Override any default by uncommenting and modifying.
+# CLI flags take highest precedence over values set here.
+# ──────────────────────────────────────────────────────────────
+
+name: "baseline_v1"
+
+# ── Target Variable ──
+target:
+  horizons: [1, 7, 14, 30, 90]       # Forecast horizons in days
+  price_column: "close"               # Column used for return computation
+  target_type: "log_return"           # log_return = ln(P[t+h] / P[t])
+
+# ── Feature Reduction ──
+reduction:
+  correlation_threshold: 0.95         # Remove one from pairs with |corr| > this
+  variance_threshold: 1.0e-6          # Remove features with variance below this
+
+# ── Walk-Forward Validation ──
+validation:
+  min_train_ratio: 0.6                # Minimum fraction of data for first train window
+  val_size_ratio: 0.1                 # Fraction of data per validation fold
+  step_size_ratio: 0.1                # Window advance per fold
+
+# ── Feature Scaling ──
+scaling:
+  method: "robust"                    # RobustScaler (median/IQR)
+  quantile_range: [25.0, 75.0]       # Percentile range for IQR
+
+# ── Evaluation Scoring (weights MUST sum to 1.0) ──
+scoring:
+  accuracy_weight: 0.40               # RMSE, MAE, Median AE, MAPE
+  interval_weight: 0.35               # PICP, MPIW
+  directional_weight: 0.20            # Direction accuracy, precision, recall, F1
+  efficiency_weight: 0.05             # Training time, inference time, model size
+  confidence_level: 0.90              # 90% prediction intervals
+
+# ── Hardware ──
+device:
+  use_cuda: true                      # Auto-detect CUDA; false forces CPU
+  gpu_memory_fraction: 0.9            # Max fraction of VRAM to allocate
+  mixed_precision: false              # FP16 training (saves VRAM on RTX 3050)
+
+# ── Training ──
+training:
+  seed: 42
+  n_jobs: 1                           # Parallelism for sklearn models (-1 = all cores)
+  verbose: true                       # Progress bars and detailed output
+  save_all_folds: false               # Save per-fold model checkpoints
+  resume: true                        # Skip already-completed runs on restart
+
+# ── File Paths ──
+paths:
+  features_dir: "features"
+  models_dir: "models"
+  archive_dir: "archive"
+  evaluation_dir: "evaluation"
+  predictions_dir: "predictions"
+  experiments_dir: "experiments"
+  logs_dir: "logs"
+
+# ── Subset Filters (null = ALL) ──
+coins: null                           # e.g., ["BTC", "ETH", "SOL"]
+models: null                          # e.g., ["XGBoost", "LightGBM"]
+
+# ── Per-Model Hyperparameter Overrides ──
+# Uncomment to override defaults from config/defaults/*.yaml
+# model_params:
+#   XGBoost:
+#     n_estimators: 2000
+#     max_depth: 8
+#   LightGBM:
+#     num_leaves: 127

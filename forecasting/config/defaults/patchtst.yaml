@@ -1,0 +1,26 @@
+# PatchTST default hyperparameters
+#
+# Patch-based Transformer for time series forecasting.
+# Divides the input sequence into patches and applies
+# self-attention across patches rather than individual time steps.
+
+# Architecture
+d_model: 64
+n_heads: 4
+n_layers: 2
+d_ff: 128
+dropout: 0.2
+patch_len: 8
+stride: 4
+
+# Training
+max_epochs: 50
+batch_size: 32
+learning_rate: 0.001
+patience: 5                          # Early stopping patience
+
+# Context length
+context_length: 60
+
+# Quantile outputs for prediction intervals
+quantiles: [0.05, 0.25, 0.50, 0.75, 0.95]

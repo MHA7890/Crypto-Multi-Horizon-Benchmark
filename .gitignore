@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and logs
+cache/
+logs/
+*.log
+cmc_response.json
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Large datasets & archives
+*.zip
+crypto-forecasting-dataset/
+crypto-code-dataset/
+
+# Kaggle scripts, setup & notebooks
+kaggle/
+KAGGLE_SETUP.md
+*.ipynb
+
+# Local data & outputs
+historical/
+features/
+live/
+models/
+archive/
+experiments/
+evaluation/
+validation/
+
+# Virtual environments
+.venv/
+venv/
+env/

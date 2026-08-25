@@ -1,0 +1,28 @@
+# Temporal Fusion Transformer (TFT) default hyperparameters
+#
+# Uses pytorch-forecasting's TemporalFusionTransformer with
+# QuantileLoss for probabilistic forecasting. Trained via
+# PyTorch Lightning with automatic CUDA detection.
+
+# Architecture
+hidden_size: 32
+attention_head_size: 2
+dropout: 0.1
+hidden_continuous_size: 16
+
+# Training
+max_epochs: 50
+batch_size: 32
+learning_rate: 0.001
+gradient_clip_val: 0.5
+patience: 5                          # Early stopping patience
+
+# Quantile outputs for prediction intervals
+quantiles: [0.05, 0.25, 0.50, 0.75, 0.95]
+
+# Context length (number of historical time steps)
+max_encoder_length: 60
+max_prediction_length: 1             # Overridden per horizon
+
+# Reduce hidden size for RTX 3050 (4 GB VRAM)
+reduce_on_plateau_patience: 3

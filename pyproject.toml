@@ -1,0 +1,57 @@
+[project]
+name = "crypto-forecasting"
+version = "0.1.0"
+description = "Production-quality cryptocurrency forecasting system with multi-horizon probabilistic predictions"
+requires-python = ">=3.11"
+readme = "README.md"
+
+dependencies = [
+    # ── Data ──
+    "pandas>=2.2",
+    "numpy>=1.26",
+
+    # ── Configuration ──
+    "pyyaml>=6.0",
+
+    # ── ML: Classical ──
+    "scikit-learn>=1.5",
+    "statsmodels>=0.14",
+    "xgboost>=2.1",
+    "lightgbm>=4.4",
+
+    # ── ML: Deep Learning ──
+    "torch>=2.3",
+    "pytorch-lightning>=2.3",
+    "pytorch-forecasting>=1.1",
+
+    # ── Serialization ──
+    "joblib>=1.4",
+
+    # ── Progress ──
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+explainability = [
+    "shap>=0.45",
+    "matplotlib>=3.9",
+]
+optimization = [
+    "optuna>=4.0",
+    "optuna-dashboard>=0.16",
+]
+testing = [
+    "pytest>=8.2",
+    "pytest-cov>=5.0",
+]
+dev = [
+    "crypto-forecasting[explainability,optimization,testing]",
+]
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
